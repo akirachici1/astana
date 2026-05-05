@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: astana-backend
+    runtime: node
+    plan: free
+    rootDir: ./
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: DB_PATH
+        value: ./database/astana.db
+      - key: NODE_ENV
+        value: production
