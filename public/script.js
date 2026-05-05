@@ -11,9 +11,10 @@
 
 /* ══════════════════════════════════════════
    CONFIG — URL backend API
-   Ganti dengan URL server Anda saat deploy
+   Saat deploy ke production, gunakan host yang sama.
+   Gunakan window.API_BASE jika perlu override, atau default ke origin.
 ══════════════════════════════════════════ */
-const API_BASE = window.API_BASE || 'http://localhost:3000';
+const API_BASE = window.API_BASE || window.location.origin;
 
 /* ══════════════════════════════════════════
    UTILS
