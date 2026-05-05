@@ -121,8 +121,8 @@
 </div>
 
 <script>
-// ★ MODIFIKASI: API_BASE diambil dari config global atau default localhost
-const API_BASE = window.API_BASE || 'http://localhost:3000';
+// ★ MODIFIKASI: API_BASE diambil dari config global atau default origin saat deploy
+const API_BASE = window.API_BASE || window.location.origin;
 
 async function doLogin() {
   const username = document.getElementById('username').value;
@@ -151,6 +151,8 @@ async function doLogin() {
     const validUsername = 'faris';
     const validPassword = 'farisganteng123';
     if (username === validUsername && password === validPassword) {
+      const fallbackToken = btoa(`${validUsername}:${Date.now()}`);
+      localStorage.setItem('adminToken', fallbackToken);
       localStorage.setItem('adminLoggedIn', 'true');
       localStorage.setItem('adminLoginTime', new Date().toISOString());
       window.location.href = 'admin_dashboard.html';
