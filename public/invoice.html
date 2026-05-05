@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice — Astana Hajj & Umroh Travel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── NAVBAR (no-print) ── -->
+<nav class="navbar no-print">
+  <div class="navbar-brand">
+    <div class="navbar-logo">🕌</div>
+    <div class="navbar-title">
+      Astana Hajj & Umroh
+      <span>Paciran, Lamongan</span>
+    </div>
+  </div>
+  <ul class="navbar-nav">
+    <li><a href="index.html">Beranda</a></li>
+    <li><a href="paket.html">Paket</a></li>
+    <li><a href="daftar.html">Daftar</a></li>
+    <li><a href="kontak.html">Kontak</a></li>
+  </ul>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ── INVOICE CONTENT ── -->
+<div style="padding-top: 88px; background: var(--frost); min-height: 100vh;">
+  <div class="container">
+    <div id="invoice-content">
+      <div class="invoice-wrapper">
+
+        <div class="invoice-card">
+
+          <!-- Header -->
+          <div class="invoice-header">
+            <div class="inv-brand">
+              <div class="inv-logo">🕌</div>
+              <div class="inv-name">Astana Hajj & Umroh Travel</div>
+              <div class="inv-tagline">Perjalanan Satu Anda, Komitmen Kami</div>
+              <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 10px; line-height: 1.6;">
+                Jl. Pondok No. 30, Paciran, Lamongan<br>
+                📱 0812-352-70809 &nbsp;|&nbsp; 📧 astanatourpaciran@gmail.com
+              </div>
+            </div>
+            <div class="inv-meta">
+              <small>Nomor Invoice</small>
+              <div class="inv-number" id="inv-number">AHU-—</div>
+              <small style="margin-top: 10px;">Tanggal Daftar</small>
+              <div style="font-size: 0.9rem; color: rgba(255,255,255,0.7);" id="inv-date">—</div>
+              <div class="inv-status status-pending" id="inv-status">Menunggu Pembayaran</div>
+            </div>
+          </div>
+
+          <!-- Body -->
+          <div class="invoice-body">
+
+            <!-- Data Jamaah -->
+            <div class="inv-section-title">Data Jamaah</div>
+            <div class="inv-grid">
+              <div class="inv-field">
+                <small>Nama Lengkap</small>
+                <p id="inv-nama">—</p>
+              </div>
+              <div class="inv-field">
+                <small>No. KTP / Paspor</small>
+                <p id="inv-ktp">—</p>
+              </div>
+              <div class="inv-field">
+                <small>Tanggal Lahir</small>
+                <p id="inv-lahir">—</p>
+              </div>
+              <div class="inv-field">
+                <small>No. WhatsApp</small>
+                <p id="inv-wa">—</p>
+              </div>
+              <div class="inv-field" style="grid-column: 1 / -1;">
+                <small>Alamat</small>
+                <p id="inv-alamat">—</p>
+              </div>
+            </div>
+
+            <!-- Paket -->
+            <div class="inv-section-title">Detail Paket</div>
+            <div class="inv-package-box">
+              <div class="inv-pkg-left">
+                <small>Jadwal Keberangkatan</small>
+                <strong id="inv-pkg-tanggal">—</strong>
+              </div>
+              <div class="inv-pkg-price" id="inv-pkg-harga">—</div>
+            </div>
+
+            <!-- Totals -->
+            <div class="inv-section-title">Rincian Pembayaran</div>
+            <div class="inv-totals">
+              <div id="inv-totals-body">
+                <!-- Filled by JS -->
+              </div>
+            </div>
+
+            <!-- QRIS -->
+            <!-- QRIS -->
+<div class="inv-section-title">Pembayaran Via QRIS</div>
+<div class="qris-section">
+  <div class="qris-title">Scan QRIS untuk Membayar</div>
+  <div class="qris-placeholder" style="display: flex; align-items: center; justify-content: center; background: white; padding: 10px;">
+    <img src="Image_laper.jpeg" 
+         alt="QRIS Astana Hajj & Umroh" 
+         style="width: 350px; height: 350px; object-fit: contain; display: block;">
+  </div>
+  <div class="qris-note">
+    Scan QR Code di atas menggunakan aplikasi mobile banking atau e-wallet Anda.<br>
+    <strong>Nama Merchant: Astana Hajj & Umroh Travel</strong><br>
+    <small style="color: #666;">Atas nama: MUHAMMAD FARIS GHOZI, AHLI OSTEOPATI</small><br>
+    <small style="color: #666;">NMIID: ID1025453945038 | AO1</small>
+  </div>
+</div>
+
+          <!-- Actions -->
+          <div class="invoice-actions no-print">
+            <button class="btn btn-navy" id="btn-print">🖨️ &nbsp; Cetak Invoice</button>
+            <button class="btn btn-outline" style="color: var(--navy); border-color: var(--navy-mid);" id="btn-download">💾 &nbsp; Simpan PDF</button>
+            <button class="btn btn-green" id="btn-confirm">✅ &nbsp; Konfirmasi Pembayaran</button>
+            <a href="paket.html" class="btn" style="background: var(--frost); color: var(--text-mid); border: 1px solid rgba(179,207,229,0.5);">← &nbsp; Kembali ke Paket</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

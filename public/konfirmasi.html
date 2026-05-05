@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konfirmasi Pembayaran — Astana Hajj & Umroh Travel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar">
+  <div class="navbar-brand">
+    <div class="navbar-logo">🕌</div>
+    <div class="navbar-title">
+      Astana Hajj & Umroh
+      <span>Paciran, Lamongan</span>
+    </div>
+  </div>
+  <ul class="navbar-nav">
+    <li><a href="index.html">Beranda</a></li>
+    <li><a href="paket.html">Paket</a></li>
+    <li><a href="daftar.html">Daftar</a></li>
+    <li><a href="kontak.html">Kontak</a></li>
+  </ul>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ── PAGE HERO ── -->
+<div class="page-hero">
+  <div class="container">
+    <div class="section-tag">Langkah Terakhir</div>
+    <h1 class="page-hero-title">Konfirmasi Pembayaran</h1>
+    <p class="page-hero-sub">Upload bukti transfer untuk mempercepat proses verifikasi</p>
+  </div>
+</div>
+
+<!-- ── FORM ── -->
+<section style="padding: 60px 0 80px; background: var(--frost);">
+  <div class="container">
+    <div class="confirm-container">
+
+      <!-- Success State (hidden by default) -->
+      <div id="konfirm-success" style="display: none;">
+        <div style="background: white; border-radius: var(--radius-lg); padding: 56px 40px; text-align: center; box-shadow: var(--shadow-md); border: 1px solid rgba(179,207,229,0.4);">
+          <div style="font-size: 4rem; margin-bottom: 20px;">✅</div>
+          <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--navy); margin-bottom: 12px;">Konfirmasi Terkirim!</h2>
+          <p style="color: var(--text-light); font-size: 0.95rem; line-height: 1.7; max-width: 400px; margin: 0 auto 32px;">
+            Bukti pembayaran Anda telah kami terima. Tim kami akan memverifikasi dalam <strong style="color: var(--navy);">1×24 jam</strong> kerja.
+          </p>
+          <div style="background: rgba(74,127,167,0.06); border: 1px solid rgba(74,127,167,0.15); border-radius: var(--radius); padding: 20px; margin-bottom: 32px; text-align: left;">
+            <div style="font-size: 0.75rem; color: var(--text-light); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600;">Status Terkini</div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span class="inv-status status-waiting">Menunggu Verifikasi</span>
+              <span style="font-size: 0.85rem; color: var(--text-mid);">Tim kami sedang memeriksa pembayaran Anda</span>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <a href="invoice.html" class="btn btn-navy btn-block">Lihat Invoice</a>
+            <a href="https://wa.me/628123527080?text=Assalamu'alaikum, saya ingin konfirmasi pembayaran umroh." target="_blank" class="btn btn-green btn-block">
+              📲 &nbsp; Hubungi via WhatsApp
+            </a>
+            <a href="index.html" class="btn btn-block" style="background: var(--frost); color: var(--text-mid); border: 1px solid rgba(179,207,229,0.5);">Kembali ke Beranda</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div id="konfirm-form-wrapper">
+        <div class="form-container" style="margin: 0;">
+
+          <h2 class="form-title">Upload Bukti Transfer</h2>
+          <p class="form-subtitle">Pastikan bukti pembayaran terlihat jelas dan terbaca</p>
+
+          <form id="form-konfirmasi" novalidate>
+
+            <div class="form-group">
+              <label class="form-label" for="konfirm-invoice-num">Nomor Invoice <span>*</span></label>
+              <input type="text" id="konfirm-invoice-num" name="invoice_num" class="form-control" placeholder="Contoh: AHU-20260701-1234" readonly style="background: rgba(74,127,167,0.04); cursor: not-allowed; color: var(--text-mid);">
+              <p style="font-size: 0.77rem; color: var(--text-light); margin-top: 6px;">Nomor invoice otomatis terisi dari pendaftaran Anda</p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Bukti Transfer <span>*</span></label>
+              <div class="upload-area" id="upload-area">
+                <input type="file" id="bukti-transfer" name="bukti_transfer" accept="image/*">
+                <div class="upload-icon">📎</div>
+                <div class="upload-text">
+                  <strong>Klik untuk upload</strong> atau seret file ke sini<br>
+                  <span style="font-size: 0.8rem; color: var(--text-light);">PNG, JPG, JPEG hingga 5MB</span>
+                </div>
+              </div>
+              <div class="upload-preview" id="upload-preview">
+                <img id="preview-img" src="" alt="Preview Bukti Transfer">
+                <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 8px; text-align: center;">✓ File berhasil dipilih</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="nominal-transfer">Nominal Transfer (Rp) <span>*</span></label>
+              <input type="number" id="nominal-transfer" name="nominal" class="form-control" placeholder="Masukkan jumlah yang ditransfer" required min="1">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="bank-pengirim">Bank / Metode Transfer</label>
+              <select id="bank-pengirim" name="bank" class="form-control">
+                <option value="">— Pilih Bank/Metode —</option>
+                <option value="BCA">Bank BCA</option>
+                <option value="BRI">Bank BRI</option>
+                <option value="BNI">Bank BNI</option>
+                <option value="Mandiri">Bank Mandiri</option>
+                <option value="BSI">Bank Syariah Indonesia (BSI)</option>
+                <option value="QRIS">QRIS</option>
+                <option value="GoPay">GoPay</option>
+                <option value="OVO">OVO</option>
+                <option value="Dana">DANA</option>
+                <option value="Lainnya">Lainnya</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="catatan">Catatan Tambahan</label>
+              <textarea id="catatan" name="catatan" class="form-control" rows="3" placeholder="Opsional: misal nama akun pengirim, atau informasi lain" style="resize: vertical;"></textarea>
+            </div>
+
+            <div style="background: rgba(74,127,167,0.06); border: 1px solid rgba(74,127,167,0.15); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 28px; font-size: 0.85rem; color: var(--text-mid); line-height: 1.7;">
+              📋 <strong>Info Rekening:</strong><br>
+              Bank BSI &nbsp;|&nbsp; No. Rek: <strong>7xxxxxxxxxx</strong> &nbsp;|&nbsp; a.n. <strong>Astana Hajj & Umroh Travel</strong><br>
+              <span style="color: var(--text-light); font-size: 0.8rem;">Konfirmasi juga dapat dilakukan via WhatsApp ke 0812-352-70809</span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" style="padding: 16px; font-size: 1rem;">
+              ✅ &nbsp; Kirim Konfirmasi Pembayaran
+            </button>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-icon">🕌</div>
+          <div class="footer-logo-text">Astana Hajj & Umroh<small>Paciran, Lamongan</small></div>
+        </div>
+        <p class="footer-desc">Melayani jamaah umroh dengan sepenuh hati.</p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Navigasi</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="paket.html">Paket Umroh</a></li>
+          <li><a href="daftar.html">Pendaftaran</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Kontak</h4>
+        <div class="footer-contact-item"><span>📱</span><span>0812-352-70809</span></div>
+        <div class="footer-contact-item"><span>📧</span><span>astanatourpaciran@gmail.com</span></div>
+        <div class="footer-contact-item"><span>📍</span><span>Jl. Pondok No. 30, Paciran, Lamongan</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Astana Hajj & Umroh Travel.</span>
+      <span style="color: var(--gold);">Perjalanan Satu Anda, Komitmen Kami</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
