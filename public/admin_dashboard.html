@@ -2,6 +2,8 @@
 <html lang="id">
 <head>
 <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin Dashboard — Astana Hajj & Umroh Travel</title>
@@ -1027,7 +1029,49 @@ async function renderLaporan() {
 }
 
 function exportExcel() { toast('Fungsi export Excel tersedia di versi lengkap', 'warning'); }
-async function exportPDF() { toast('Fungsi export PDF tersedia di versi lengkap', 'warning'); }
+async function exportPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  
+  // Header
+  doc.setFontSize(18);
+  doc.text('Laporan Pendaftaran Umroh', 20, 20);
+  doc.setFontSize(12);
+  doc.text('Astana Hajj & Umroh Travel', 20, 30);
+  doc.text(`Tanggal: ${new Date().toLocaleDateString('id-ID')}`, 20, 40);
+  
+  // Ambil data dari tabel
+  const tbody = document.getElementById('laporanTbody');
+  if (!tbody || !tbody.rows.length) {
+    toast('Tidak ada data untuk diekspor', 'error');
+    return;
+  }
+  
+  const data = [];
+  const headers = ['Tanggal', 'Nama', 'Paket', 'Status', 'Metode', 'Nominal', 'Keterangan'];
+  data.push(headers);
+  
+  for (let i = 0; i < tbody.rows.length; i++) {
+    const row = tbody.rows[i];
+    if (row.classList.contains('total-row')) continue; // Skip total row
+    const cells = Array.from(row.cells).map(cell => cell.textContent.trim());
+    data.push(cells);
+  }
+  
+  // Tambahkan tabel ke PDF
+  doc.autoTable({
+    head: [data[0]],
+    body: data.slice(1),
+    startY: 50,
+    styles: { fontSize: 8 },
+    headStyles: { fillColor: [0, 102, 204] },
+    alternateRowStyles: { fillColor: [245, 245, 245] }
+  });
+  
+  // Download PDF
+  doc.save(`laporan-pendaftaran-${new Date().toISOString().slice(0,10)}.pdf`);
+  toast('PDF berhasil diekspor!', 'success');
+}
 
 async function hubungiWA(invoiceNum) {
   const data = await getData(); const d = data.find(i => i.invoiceNumber === invoiceNum);
